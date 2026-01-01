@@ -1,0 +1,211 @@
+# 🧪 Playwright Automation Framework – Advantage Online Shopping
+
+## 👋 Overview
+
+This repository contains a **production-grade end-to-end automation test framework** built using **Playwright with TypeScript**, designed to validate critical user journeys on the Advantage Online Shopping demo e‑commerce application:
+
+🔗 **Application Under Test (AUT):** [https://www.advantageonlineshopping.com/](https://www.advantageonlineshopping.com/)
+
+The framework is architected following **top 1% automation engineering standards**, emphasizing:
+
+* Clean **Page Object Model (POM)** design
+* Reliable and deterministic test execution
+* Realistic user behavior simulation
+* Maintainability, scalability, and CI/CD readiness
+
+---
+
+## 🎯 Test Objectives Covered
+
+The automated suite validates the following core customer journeys:
+
+1. **User Management**
+
+   * Create a new user account
+   * Login with valid credentials
+   * Logout successfully
+   * Validate error handling for invalid login attempts
+
+2. **E‑Commerce Purchase Flow**
+
+   * Add a product to the cart
+   * Start checkout as a logged‑out user (redirect to login)
+   * Complete checkout as a logged‑in user
+   * Complete direct payment flow using SafePay
+
+---
+
+## 🏗 Framework Architecture
+
+```
+MOZILOR/
+├── Pages/                 # Page Object Model layer
+│   ├── LoginPage.ts
+│   └── HomePage.ts
+│
+├── tests/                 # Test specifications
+│   ├── TC_001_Create_a_new_user_account.test.ts
+│   ├── TC_002_Validate_error_handling_for_invalid_login_attempts.test.ts
+│   ├── TC_003_Add_a_product_to_the_cart_and_start_checkout.test.ts
+│   └── TC_004_Handle_login_redirect_and_direct_payment_flow.test.ts
+│
+├── playwright-report/     # HTML execution report
+├── test-results/          # Raw execution artifacts
+├── playwright.config.ts   # Global Playwright configuration
+├── package.json
+└── README.md
+```
+
+### 🔑 Design Principles Applied
+
+* **Strict POM separation** (No assertions inside tests leaking into page layers)
+* **Single responsibility** per page class
+* **Resilient locators** (role-based & attribute-based selectors)
+* **Explicit assertions** for navigation, visibility, and state validation
+* **Chromium-first execution** as per requirement
+
+---
+
+## ⚙️ Prerequisites
+
+Ensure the following are installed on your machine:
+
+* **Node.js** ≥ 18.x
+* **npm** ≥ 9.x
+* **Git**
+
+Verify installation:
+
+```bash
+node -v
+npm -v
+git --version
+```
+
+---
+
+## 🚀 Setup Instructions
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone <your-github-repo-url>
+cd MOZILOR
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Install Playwright Browsers
+
+```bash
+npx playwright install
+```
+
+This will install **Chromium**, which is the configured execution browser.
+
+---
+
+## ▶️ Test Execution
+
+### 🔹 Run All Tests (Headless)
+
+```bash
+npx playwright test
+```
+
+### 🔹 Run Tests in Headed Mode
+
+```bash
+npx playwright test --headed
+```
+
+### 🔹 Run a Specific Test Case
+
+```bash
+npx playwright test tests/TC_001_Create_a_new_user_account.test.ts
+```
+
+### 🔹 Run with Debug Mode
+
+```bash
+npx playwright test --debug
+```
+
+---
+
+## 📊 Test Reports
+
+After execution, Playwright generates a rich HTML report.
+
+### View Report
+
+```bash
+npx playwright show-report
+```
+
+📁 Reports are stored under:
+
+* `playwright-report/`
+* `test-results/`
+
+---
+
+## 🔐 Test Data Strategy
+
+* **Static test credentials** are used for demo stability
+* User creation uses deterministic data (can be enhanced with UUID/randomization if required)
+* Payment flow uses **SafePay sandbox credentials** only
+
+> ⚠️ Since this is a public demo site, occasional instability is expected. Timeouts and assertions are tuned accordingly.
+
+---
+
+## 🧠 Engineering Best Practices Followed
+
+✔ Page Object Model (POM)
+✔ Explicit waits with meaningful assertions
+✔ Zero hard sleeps (`waitForTimeout` avoided)
+✔ Readable, business‑aligned test names
+✔ CI/CD friendly (Azure DevOps / GitHub Actions ready)
+✔ Scalable structure for future test expansion
+
+---
+
+## 🔄 CI/CD Readiness (Optional)
+
+This framework can be easily integrated with:
+
+* **GitHub Actions**
+* **Azure DevOps Pipelines**
+* **Jenkins**
+
+Chromium-only execution ensures fast and deterministic CI runs.
+
+---
+
+## 🧑‍💻 Author Notes
+
+This framework is built with a **senior SDET / Automation Architect mindset**, focusing on:
+
+* Real-world automation standards
+* Interview‑ready design
+* Enterprise‑grade maintainability
+
+If this were extended further, next enhancements would include:
+
+* Test data factories
+* API‑UI hybrid setup
+* Environment config layers
+* Parallel test sharding
+
+---
+
+## 📬 Questions / Enhancements
+
+For any clarifications or improvements, feel free to reach out.
+
+Happy Testing 🚀
